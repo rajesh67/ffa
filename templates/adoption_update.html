@@ -1,0 +1,69 @@
+{% extends './base.html' %}
+{% load bootstrap3 %}
+{% block buttons %}
+<div class="col-sm-5"></div>
+<div class="col-sm-2">
+	​<a href="{% url 'medications' %}">
+	  <img class="image-circle" src="{{ MEDIA_URL }}images/medication.png" class="img-fluid img-thumbnail" alt="Adopt A PET" style="border-radius: 100px; margin: 5% 15%;" width="70%">
+	</a>
+</div>
+
+<div class="col-sm-2" id="thirdButton" style="margin-top: 25px;">
+  <a href="{% url 'donations' %}">
+  <img class="image-circle" src="{{ MEDIA_URL }}images/donation.png" class="img-fluid img-thumbnail" alt="Adopt A PET" style="border-radius: 100px; margin: 5% 15%;" width="70%">
+</a>
+</div>
+<div class="col-sm-2"></div>
+{% endblock %}
+
+{% block extendedPage %}
+<div class="homeContents" style="margin-top: 20px;">
+	<div class="row">
+		
+		<div class="col-sm-2" style="margin-left: 30px; width: 80%; margin-bottom: 20px;">
+			<div class="card">
+			<div class="card-body">
+				<img src="http://www.idaindia.org/images/volunteer_header.gif" style="margin-left: -25px;">
+				<h5 class="card-title" style="font-size: .8em;">It's not just funds and homes that our dear animals need. You can contribute your time and energy to bring about a difference.</h5>
+				<a class="card-text" href="{% url 'volunteers' %}">
+
+					<button class="btn btn-block btn-warning" style="border-radius: 5px;">Signup Here</button>
+				</a>
+				
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-8" style="margin-left: 10px; width: 80%; margin-bottom: 20px; font-size: 1em; font-family: sans-serif;">
+			<div class="card">
+			<div class="card-body">
+				<div class="bigHead" style="background-color: yellow; padding: 10px 10px; margin: -20px -35px;">
+					<h5 class="card-title">PET Adoptions</h5>
+					<hr>
+				</div>
+
+				<div class="adoptionContent" style="font-size: 1em; margin-top: 30px;">
+					<p class="card-text">
+						<form class="form" action="" method="post">
+							{% csrf_token %}
+							{% bootstrap_form form %}
+							{% buttons %}
+								<button type="submit" class="btn btn-primary btn-block">{% bootstrap_icon "star" %}Update Question</button>
+							{% endbuttons %}
+						</form>
+					</p>
+				</div>
+				
+			</div>
+			</div>
+		</div>
+		<div class="col-md-2" style="margin-left: 10px; width: 80%; margin-bottom: 20px;">
+			<div class="card">
+			<div class="card-body">
+				<h5 class="card-title"></h5>
+				<p class="card-text"></p>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

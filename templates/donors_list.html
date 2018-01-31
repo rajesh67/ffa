@@ -1,0 +1,111 @@
+﻿{% extends './base.html' %}
+
+{% block buttons %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<div class="col-sm-3"></div>
+<div class="col-sm-2">
+	​<a href="{% url 'medications' %}">
+	  <img class="image-circle" src="{{ MEDIA_URL }}images/medication.png" class="img-fluid img-thumbnail" alt="Adopt A PET" style="border-radius: 100px; margin: 5% 15%;" width="70%">
+	</a>
+</div>
+
+<div class="col-sm-2">
+​<a href="{% url 'adoptions' %}">
+  <img class="image-circle" src="{{ MEDIA_URL }}images/adoption_new.png" class="img-fluid img-thumbnail" alt="Adopt A PET" style="border-radius: 100px; margin: 5% 15%;" width="70%">
+</a>
+</div>
+
+<div class="col-sm-2" id="thirdButton" style="margin-top: 25px;">
+  <a href="{% url 'donations' %}">
+  <img class="image-circle" src="{{ MEDIA_URL }}images/donation.png" class="img-fluid img-thumbnail" alt="Adopt A PET" style="border-radius: 100px; margin: 5% 15%;" width="70%">
+</a>
+</div>
+<div class="col-sm-3"></div>
+{% endblock %}
+
+{% block extendedPage %}
+<div class="homeContents" style="margin-top: 20px;">
+	<div class="row">
+		
+		<div class="col-sm-2" style="margin-left: 30px; width: 80%; margin-bottom: 20px;">
+			<div class="card">
+			<div class="card-body">
+				<img src="http://www.idaindia.org/images/volunteer_header.gif" style="margin-left: -25px;" width="150%">
+				<h5 class="card-title" style="font-size: .8em;">It's not just funds and homes that our dear animals need. You can contribute your time and energy to bring about a difference.</h5>
+				<a class="card-text" href="{% url 'volunteers' %}">
+
+					<button class="btn btn-block btn-warning" style="border-radius: 5px;">Signup Here</button>
+				</a>
+				
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-7" style="margin-left: 10px; width: 80%; margin-bottom: 20px; font-size: 1em; font-family: sans-serif;">
+			<div class="card">
+			<div class="card-body">
+				<div class="bigHead" style="background-color: yellow; padding: 10px 10px; margin: -20px -35px;">
+					<h5 class="card-title">Donors List</h5>
+					<hr>
+				</div>
+				<div class="donationContent" style="font-size: 1em; margin-top: 10%;">
+					<p class="card-text">
+						<strong>People Who have Donated in this Social Cause</strong>
+					</p>
+					<div class="donors">
+						<!-- Donors Liosst -->
+						<table style="width: 100%;">
+							<!-- Headers -->
+							<tr>
+								<td>Donor List : Dec. - 2017</td>
+							</tr>
+
+							<tr>
+								<th>Sl. No.</th>
+								<th>Donor Name</th>
+								<th>Email.id</th>
+								<th>Donation Amount</th>
+							</tr>
+							{% for donor in object_list %}
+								<tr>
+									<td>{{donor.pk}}</td>
+									<td>{{donor.name}}</td>
+									<td>{{donor.email}}</td>
+									<td>{{donor.amount}}</td>
+								</tr>
+							{% endfor %}
+						</table>
+						<!-- /endtable -->
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-2" style="margin-left: 10px; width: 80%; margin-bottom: 20px;">
+			<div class="card">
+			<div class="card-body">
+				<h5 class="card-title"></h5>
+				<p class="card-text">
+					
+				</p>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

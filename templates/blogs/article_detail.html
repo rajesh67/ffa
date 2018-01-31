@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load social_share %}
+{% block blogHeader %}
+<div class="container-fluid" style="margin-top: 2%;">
+    <div class="header" style="background-image: url({{MEDIA_URL}}{{object.image}}); padding-bottom: 25%; margin-bottom: 1%;background-repeat: no-repeat; margin-left: 3%">
+        <!-- Header -text -->
+        <div  style="width: 80%; margin-left: 10%; padding-top: 25%;">
+            <font color="red">
+                <div class="text-center"><h1>{{object.title }}</h1></div>
+            <div class="text-center"><h5>{{object.subtitle}}</h5></div>
+            </font>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extendedPage %}
+<div class="homeContents" style="margin-top: 20px;">
+    <div class="row">
+        
+        <div class="col-sm-2" style="margin-left: 1%; width: 80%; margin-bottom: 20px;">
+            <div class="card">
+            <div class="card-body">
+                <img src="http://www.idaindia.org/images/volunteer_header.gif" style="margin-left: -25px;" width="100%">
+                <h5 class="card-title" style="font-size: .8em;">It's not just funds and homes that our dear animals need. You can contribute your time and energy to bring about a difference.</h5>
+                <a class="card-text" href="{% url 'volunteers' %}">
+
+                    <button class="btn btn-block btn-warning" style="border-radius: 5px;">Signup Here</button>
+                </a>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-9" style="margin-left: -1%; width: 80%; margin-bottom: 20px;">
+            <div class="card">
+            <div class="card-body">
+                <div class="bigHead" style="background-color: yellow; padding: 10px 10px; margin: -20px -35px;">
+                    <h5 class="card-title"><strong>{{object.title}}</strong></h5> 
+                    <div class="card-title">
+                    <img src="{{ MEDIA_URL }}images/donation.png" style="border-radius: 20px;" width="30px;"> posted by <a href="">{{ object.user.username }}</a>
+                </div> 
+                    <hr>
+                </div>
+            
+                <div class="homeCotents" style="font-size: 1em; margin-top: 30px;">
+                    <p class="card-text">
+                        
+                        <div class="card" style="margin-top: 10px;">
+                            
+                            <div class="card-text">
+                                <p>{{ object.text|safe }}</p>
+                            </div>
+                            <hr style="border: 1px dotted black;">
+                            <div style="margin-top: 1%;">
+                                {% post_to_facebook object  "Share On Facebook" %}
+                            </div>
+                            <div style="margin-top: 1%;">
+                                {% post_to_twitter "{{object.title}}" object "Share On Twitter" %}
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-2" style="margin-left: -1%; width: 80%; margin-bottom: 20px;">
+            <!-- <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Contents</h5>
+                <p class="card-text">text</p>
+            </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block buttons %}
+
+{% endblock %}
